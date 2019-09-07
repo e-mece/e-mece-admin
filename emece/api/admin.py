@@ -12,14 +12,16 @@ class EmeceAdmin(admin. ModelAdmin):
 
 class UserEventInline(admin.TabularInline):
     model = UserEvent
-
-    readonly_fields = ('user_id', 'event_id', 'active', 'created', 'modified')
+    readonly_fields = ('user_id', 'event_id', 'active', 'approved', 'created', 'modified')
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
+
         if db_field.name == 'user':
+            self.verbose_name = 'Kullanıcının Kayıtlı Olduğu Etkinlikler'
             kwargs['queryset'] = Event.objects.filter(userevent__user_id=request.id)
             return super().formfield_for_manytomany(db_field, request, **kwargs)
         elif db_field.name == 'event':
+            self.verbose_name = 'Etkinliğe Kayıtlı Kullanıcılar'
             kwargs['queryset'] = User.objects.filter(userevent__event_id=request.id)
             return super().formfield_for_manytomany(db_field, request, **kwargs)
 
@@ -42,7 +44,6 @@ class UserAdmin(EmeceAdmin):
 
     fieldsets = (
         ('Kisisel Bilgiler', {
-            'classes': ('collapse', ),
             'fields':
                 (
                     'id',
@@ -56,7 +57,7 @@ class UserAdmin(EmeceAdmin):
                 )
         }),
         ('Duzenleme', {
-            'fields': ('is_verified',)
+            'fields': ('is_verified', 'type')
         }),
     )
 
@@ -70,6 +71,7 @@ class EventAdmin(EmeceAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'is_cancelled',
                 'approved',
                 'approver_id',
                 'creator_id',
