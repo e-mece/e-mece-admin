@@ -1,0 +1,118 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+
+function filterUsers() {
+  // Declare variables
+  var input, filter, table, tr, td0, td3, td4, i, tckn, email, city;
+  input = document.getElementById("userFilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("users");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td0 = tr[i].getElementsByTagName("td")[0];
+    td3 = tr[i].getElementsByTagName("td")[3];
+    td4 = tr[i].getElementsByTagName("td")[4];
+    if (td0 || td3 || td4) {
+      tckn = td1.textContent || td1.innerText;
+      city = td3.textContent || td3.innerText;
+      email = td4.textContent || td4.innerText;
+      if (tckn.toUpperCase().indexOf(filter) > -1
+          || city.toUpperCase().indexOf(filter) > -1
+          || email.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function filterCities() {
+  // Declare variables
+  var input, filter, table, tr, td0, i, city;
+  input = document.getElementById("cityFilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("cities");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td0 = tr[i].getElementsByTagName("td")[0];
+    if (td0) {
+      city = td0.textContent || td0.innerText;
+      if (city.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+</script>
+
+<div class="row" style="padding-right:10%; padding-left:10%">
+<div class="col-xs-6">
+    <h2 class="sub-header text-center">Türkiyemizin En Aktif Gönüllüleri</h2>
+    <div class="table-responsive">
+   <input style="float: right" type="text" id="userFilter" onkeyup="filterUsers()" placeholder="Kullanıcı filtresi">
+     <table id='users' class="table">
+      <thead>
+        <tr class="info">
+          <th class='text-center' scope="col">#</th>
+          <th class='text-center' scope="col">TC Kimlik No</th>
+          <th class='text-center' scope="col">Toplam Puan</th>
+          <th class='text-center' scope="col">İsim</th>
+          <th class='text-center' scope="col">Şehir</th>
+          <th class='text-center' scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for user in users%}
+        <tr class="success">
+          <th class='text-center' scope="row">{{ forloop.counter }}</th>
+          <td class='text-center'><a href="http://127.0.0.1:8000/admin/api/user/{{ user.uid }}">{{ user.tc }}</a></td>
+          <td class='text-center'>{{ user.pts }}</td>
+          <td class='text-center'>{{ user.name }}</td>
+          <td class='text-center'>{{ user.city }}</td>
+          <td class='text-center'>{{ user.email }}</td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+</div></div>
+<div class="col-xs-6">
+<h2 class="sub-header text-center">Türkiyemizin En Aktif İlleri </h2>
+<div class="table-responsive">
+       <input style="float: right" type="text" id="cityFilter" onkeyup="filterCities()" placeholder="Şehir filtresi">
+<table id="cities" class="table">
+      <thead>
+        <tr class="info">
+          <th class='text-center' scope="col">#</th>
+          <th class='text-center' scope="col">Şehir</th>
+          <th class='text-center' scope="col">Toplam Puan</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for city in cities%}
+        <tr class="success">
+          <th class='text-center' scope="row">{{ forloop.counter }}</th>
+          <td class='text-center'>{{ city.name }}</td>
+          <td class='text-center'>{{ city.pts }}</td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+</div>
+</div>
+</div>
