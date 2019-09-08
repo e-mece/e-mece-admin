@@ -81,7 +81,7 @@ function filterCities() {
     {% for user in users%}
         <tr class="success">
           <th class='text-center' scope="row">{{ forloop.counter }}</th>
-          <td class='text-center'><a href="http://127.0.0.1:8000/admin/api/user/{{ user.uid }}">{{ user.tc }}</a></td>
+          <td class='text-center'><a href="http://127.0.0.1:8000/admin/api/user/{{ user.id }}">{{ user.tc }}</a></td>
           <td class='text-center'>{{ user.pts }}</td>
           <td class='text-center'>{{ user.name }}</td>
           <td class='text-center'>{{ user.city }}</td>
