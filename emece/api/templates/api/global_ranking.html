@@ -23,7 +23,7 @@ function filterUsers() {
     td3 = tr[i].getElementsByTagName("td")[3];
     td4 = tr[i].getElementsByTagName("td")[4];
     if (td0 || td3 || td4) {
-      tckn = td1.textContent || td1.innerText;
+      tckn = td0.textContent || td0.innerText;
       city = td3.textContent || td3.innerText;
       email = td4.textContent || td4.innerText;
       if (tckn.toUpperCase().indexOf(filter) > -1
