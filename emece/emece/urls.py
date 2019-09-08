@@ -28,6 +28,7 @@ admin.site.site_url = None
 user_resource = UserResource()
 
 urlpatterns = [
+    path('admin/ulkesiralama/', global_rankings_view),
     path('admin/api/ulkesiralama/', global_rankings_view),
     path('admin/', admin.site.urls),
     path('api/', include(user_resource.urls))
