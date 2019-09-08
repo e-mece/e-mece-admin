@@ -1,6 +1,9 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 
 from api.models import User, UserEvent, Event
+
+from api.resources import UserResource
 
 
 class EmeceAdmin(admin. ModelAdmin):
@@ -30,7 +33,9 @@ class UserEventInline(admin.TabularInline):
 
 
 @admin.register(User)
-class UserAdmin(EmeceAdmin):
+class UserAdmin(EmeceAdmin, ImportExportModelAdmin):
+    resource_class = UserResource
+
     readonly_fields = [
         'id',
         'username',

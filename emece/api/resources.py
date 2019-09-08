@@ -1,15 +1,13 @@
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
+from import_export import resources
 
 from .models import AuthUser, User, UserEvent, Event
 
 
-class UserResource(ModelResource):
+class UserResource(resources.ModelResource):
     class Meta:
-        queryset = User.objects.all()
-        resource_name = 'user'
-        authorization = Authorization()
-
+        model = User
 
 class AuthUserResource(ModelResource):
     class Meta:

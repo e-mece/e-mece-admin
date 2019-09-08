@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-08 07:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api/templates/admin/index.html:20
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: api/templates/admin/index.html:31
+msgid "Add"
+msgstr ""
+
+#: api/templates/admin/index.html:38
+msgid "View"
+msgstr ""
+
+#: api/templates/admin/index.html:40
+msgid "Change"
+msgstr ""
+
+#: api/templates/admin/index.html:59
+msgid "You don’t have permission to view or edit anything."
+msgstr ""
+
+#: api/templates/admin/index.html:67
+msgid "Recent actions"
+msgstr ""
+
+#: api/templates/admin/index.html:68
+msgid "My actions"
+msgstr ""
+
+#: api/templates/admin/index.html:72
+msgid "None available"
+msgstr ""
+
+#: api/templates/admin/index.html:86
+msgid "Unknown content"
+msgstr ""
+
+msgid "Import"
+msgstr "İçe Aktar"
+
+msgid "Export"
+msgstr "Dışa Aktar"

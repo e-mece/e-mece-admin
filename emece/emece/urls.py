@@ -16,8 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from api.resources import UserResource
-
 from api.views import global_rankings_view
 
 admin.site.site_header = "E-mece Yönetim Portalı"
@@ -25,11 +23,8 @@ admin.site.site_title = "E-mece"
 admin.site.index_title = "E-mece Yönetim Portalına Hoşgeldiniz"
 admin.site.site_url = None
 
-user_resource = UserResource()
-
 urlpatterns = [
     path('admin/ulkesiralama/', global_rankings_view),
     path('admin/api/ulkesiralama/', global_rankings_view),
     path('admin/', admin.site.urls),
-    path('api/', include(user_resource.urls))
 ]
